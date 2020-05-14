@@ -49,7 +49,7 @@ private val categotyListByAutor = mapOf(
         )
 )
 
-private val productListsByAuthor = mapOf(
+val productListsByAuthor = mapOf(
         "suvorov" to listOf(
                 Product(
                         id = "1",
