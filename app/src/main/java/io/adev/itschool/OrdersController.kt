@@ -9,6 +9,7 @@ data class Order(
         val fio: String,
         val userPhone: String,
         val userEmail: String,
+        val totalPrice: String,
         val items: List<Item>
 ) {
     /**
@@ -25,13 +26,14 @@ data class Order(
                 fio,
                 userPhone,
                 userEmail,
+                totalPrice,
                 fullOrderItems
         )
     }
 
     data class Item(
-            val productId: String,
-            val count: Int
+            val productId: String
+            //val count: Int
     ) {
         /**
          * @return [FullOrder.Item] with [Product] returned by [findProductById]
@@ -53,6 +55,7 @@ data class FullOrder(
         val fio: String,
         val userPhone: String,
         val userEmail: String,
+        val totalPrice: String,
         val items: List<Item>
 ) {
     data class Item(
@@ -90,4 +93,8 @@ class OrdersController {
         }
     }
 
+    @GetMapping("orders/test/{author}/")
+    fun test(@PathVariable author: String): List<Order> {
+        return ordersByAuthor[author] ?: emptyList()
+    }
 }
